@@ -11,11 +11,17 @@ module exercicio(a,b,c,z);
 // Declaração de portas input a, b, c; ouput z; // Variáveis (fios) intermediárias wire nc, nb, na, p0, p1, p2;
 
 // Estrutura not not0 (nc, c);
+
 not not1 (nb, b);
+
 not not2 (na, a);
+
 and and0 (p0, c, nb);
+
 or or0 (p1, nc, a);
+
 and and1 (p2, na, b);
+
 or orf (z, p0, p1, p2);
 
 endmodule
