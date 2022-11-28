@@ -1,0 +1,159 @@
+# Exercício de Descrição Comportamental
+
+# Questão 1
+
+%%file exercicio.sv
+
+/*
+
+Módulo circuito
+
+*/
+module exercicio ( j, k, clk, q );
+   // Declaração de portas
+  input clk, j, k, rst;
+  output reg q;
+
+  // Descrição comportamental
+  always @(negedge clk, negedge rst) begin
+
+    if (~rst) begin
+     q <= 1'b0;
+    end
+    else if(k == 1 & j == 0) begin 
+     q <= 1'b0;
+    end
+    else if(k == 0 & j == 1) begin
+     q <= 1'b1;
+    end
+    else if(k == 1 & j == 1) begin
+     q <= ~q;
+    end
+    
+  end
+endmodule
+
+
+# Questão 2
+
+%%file exercicio.sv
+
+/*
+
+Módulo circuito
+
+*/
+module exercicio (s, r, clk, q);
+  // Declaração de portas
+  input clk, s, r;
+  output reg q;
+
+
+  // Descrição comportamental
+  always @(negedge clk) begin
+
+    if (s == 0 & r == 0) begin
+     q <= q;
+    end
+    else if(s == 1 & r == 0) begin 
+     q <= 1'b1;
+    end
+    else if(s == 0 & r == 1) begin
+     q <= 1'b0;
+    end
+    else if(s == 1 & r == 1) begin
+     q = 1'b1;
+    end
+    
+  end
+endmodule
+
+
+# Questão 3
+
+%%file exercicio.sv
+
+/*
+
+Módulo circuito
+
+*/
+module exercicio(a, enable, q);
+  // Declaração de portas
+  input a;
+  input enable;
+  output reg q;
+
+  // Descrição comportamental
+  always @(a or enable) begin
+    if(enable)
+    case (a)
+      1'b0 : q <= 1'b0;
+      1'b1 : q <= 1'b1;
+      default : q <= 1'b0;
+    endcase
+    else q <= 1'bz;
+
+  end
+endmodule
+
+
+# Questão 4
+
+%%file exercicio.sv
+
+/*
+
+Módulo circuito
+
+*/
+module exercicio(a, enable, q);
+  // Declaração de portas
+  input a;
+  input enable;
+  output reg q;
+
+  // Descrição comportamental
+  always @(a or enable) begin
+    if(enable)
+    casex (a)
+      1'b0 : q <= 1'b0;
+      1'b1 : q <= 1'b1;
+      default : q <= 1'b0;
+    endcase
+    else q <= 1'bz;
+
+  end
+endmodule
+
+
+# Questão 5
+
+%%file exercicio.sv
+
+/*
+
+Módulo circuito
+
+*/
+module exercicio (a,b,d,borrow);
+
+  // Declaração de portas
+  input [3:0] a, b;
+  output reg borrow;
+  output reg [3:0] d;
+
+  // Variáveis auxiliares
+  reg c;
+  integer i;
+
+  // Descrição comportamental
+  always @(*) begin
+    for (i = 0; i <= 3; i=i+1) begin
+      d[i] = a[i] - b[i];
+      c = (a[i] & b[i]);
+    end
+    borrow = c;
+  end
+
+endmodule
