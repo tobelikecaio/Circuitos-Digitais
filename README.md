@@ -1,6 +1,6 @@
 # Exercícios de Descrição Estrutural
 
-##questão 1
+# questão 1
 
 %%file exercicio.sv
 
@@ -13,20 +13,17 @@ module exercicio(a,b,c,z);
 // Estrutura not not0 (nc, c);
 
 not not1 (nb, b);
-
 not not2 (na, a);
-
 and and0 (p0, c, nb);
-
 or or0 (p1, nc, a);
-
 and and1 (p2, na, b);
-
 or orf (z, p0, p1, p2);
 
 endmodule
 
-##questão 2
+
+
+# questão 2
 
 module exercicio2(i0,i1,a,q);
 
@@ -41,7 +38,9 @@ nand nand3 (q,p2,p3);
 
 endmodule
 
-##questão 3
+
+
+# questão 3
 
 module exercicio3(a,b,c,d,e);
 
