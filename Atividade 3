@@ -1,0 +1,85 @@
+# Atividade sobre Descrição por Hierarquia
+
+# Questão 1
+
+module mux2x1(a, b, sel, y);
+intput a, b, sel;
+output y;
+assign y = sel ? a:b;
+
+endmodule
+module circ_mux(e0, e1, e2, e3, s0, s1, y);
+input e0, e1, e2, e3, s0, s1;
+output y;
+
+wire e01, e23;
+
+mux2x1 m1 (e0, e1, s0, e01);
+
+mux2x1 m2 (e2, e3, s0, e23);
+
+mux2x1 m3 (e01, e23, s1, y);
+
+endmodule
+
+
+# Questão 2
+
+module soma4x1(a, b, s);
+input [3:0] a, b;
+output [3:0] s;
+assign s = (a + b);
+
+endmodule
+
+module subtracao4x1(a, b, s);
+input [3:0] a, b;
+output [3:0] s;
+
+assign s = (a - b);
+
+endmodule
+
+module and4x1(a, b, s);
+input [3:0] a, b;
+output [3:0] s;
+
+assign s = (a & b);
+
+endmodule
+
+module or4x1(a, b, s);
+input [3:0] a, b;
+output [3:0] s;
+
+assign s = (a | b);
+
+endmodule
+
+module exor4x1(a, b, s);
+input [3:0] a, b;
+output [3:0] s;
+
+assign s = (a ~| b);
+
+endmodule
+
+
+module mux(a, b, sel, y);
+intput a, b, sel;
+output y;
+assign y = sel ? a:b;
+
+endmodule
+
+module circ(op, a, dado, s, sel);
+input [3:0] a, dado;
+input [2:0] op;
+output [3:0] s;
+wire exor4x1, or4x1, and4x1, subtracao4x1, soma4x1, m1, m2, m3;
+mux(soma4x1, subtracao4x1, op, m1);
+mux(and4x1, or4x1, op, m2);
+mux(m1, m2, op, m3);
+mux(exor4x1, m3, op, s);
+
+endmodule
